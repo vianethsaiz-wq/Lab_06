@@ -34,7 +34,7 @@
     /* Colores principales */
     /* ERROR 1: El color primario no es el correcto, debería ser un cyan vibrante
        PISTA: Revisa el valor hexadecimal, el original era un tono cyan (#0ea5e9) */
-    --color-primary: #ff0000;          /* Cyan vibrante */
+    --color-primary: #0ea5e9;          /* Cyan vibrante */
     --color-primary-dark: #0284c7;
     --color-primary-light: #38bdf8;
     --color-secondary: #8b5cf6;         /* Violeta eléctrico */
@@ -102,7 +102,7 @@
     /* Z-index */
     /* ERROR 2: El header queda detrás del contenido al hacer scroll
        PISTA: El valor del z-index es muy bajo para un elemento fijo */
-    --z-fixed: 1;
+    --z-fixed: 100;
     --z-modal: 1000;
     
     /* Header */
@@ -281,6 +281,7 @@ button {
     display: flex;
     /* ERROR 6: Los elementos del nav no están alineados verticalmente al centro
        PISTA: Falta una propiedad de flexbox que alinea items en el eje transversal */
+    align-items: center;
     justify-content: space-between;
     height: 100%;
 }
@@ -322,6 +323,8 @@ button {
     width: 0;
     height: 2px;
     background: var(--gradient-primary);
+    transition: width var(--transition-base);
+    
     /* ERROR 7 (AVANZADO): La línea debajo del link aparece de golpe sin animación
        SOLUCIÓN: Falta la transición para la propiedad width
        Agregar: transition: width var(--transition-base);
@@ -424,11 +427,12 @@ button {
     max-width: 500px;
 }
 
-.hero__buttons {
+.hero_buttons {
     display: flex;
     /* ERROR 8: Los botones del hero están pegados sin espacio entre ellos
        PISTA: Falta la propiedad que define el espacio entre elementos flex */
     flex-wrap: wrap;
+    gap: var(--spacing-md)    
 }
 
 .hero__image {
@@ -449,6 +453,7 @@ button {
     /* ERROR 9: El blob en el hero no tiene la animación de forma dinámica
        PISTA: Falta la propiedad animation que referencia a blob-animation */
     position: relative;
+    animation: blob-animation 8s infinite ease-in-out;
 }
 
 @keyframes blob-animation {
